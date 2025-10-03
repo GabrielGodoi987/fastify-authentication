@@ -1,15 +1,15 @@
 import { UserRole } from "../enums/user-role.enum";
 
 export class UserEntity {
-  private id: string;
-  private name: string;
-  private email: string;
-  private userRole: UserRole;
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
 
-  constructor(id: string, name: string, email: string, userRole: UserRole) {
+  constructor(id: string, name: string, email: string, role: UserRole) {
     this.id = id;
     this.name = name;
     this.email = email;
-    this.userRole = userRole;
+    this.role = role;
   }
 }

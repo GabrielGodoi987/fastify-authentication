@@ -1,8 +1,10 @@
+import z from "zod";
 import { createUserSchema } from "../../../src/application/users/dto/create-user.schema";
 import { UserUseCase } from "../../../src/application/users/user.useCase";
 import { FastifyCustomInstance } from "../../../src/infra/config/types/fastify-instance.type";
 import { UserRepositoryImpl } from "../../../src/infra/repositories/user.repositoryIMPL";
 import { UsersController } from "../controllers/users/users.controller";
+import { UserEntity } from "src/src/domain/entities/user.entity";
 
 export default function usersRoute(fastify: FastifyCustomInstance) {
   const prefix = "/users";
@@ -16,15 +18,6 @@ export default function usersRoute(fastify: FastifyCustomInstance) {
       schema: {
         description: "find all users",
         tags: ["users"],
-        response: {
-          200: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: createUserSchema
-            }
-          }
-        }
       },
     },
     controller.findAll
@@ -36,6 +29,9 @@ export default function usersRoute(fastify: FastifyCustomInstance) {
       schema: {
         body: createUserSchema,
         tags: ["users"],
+        response: {
+          200: z.object(UserEntity),
+        },
       },
     },
     controller.create

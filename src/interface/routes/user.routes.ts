@@ -16,6 +16,15 @@ export default function usersRoute(fastify: FastifyCustomInstance) {
       schema: {
         description: "find all users",
         tags: ["users"],
+        response: {
+          200: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: createUserSchema
+            }
+          }
+        }
       },
     },
     controller.findAll

@@ -1,40 +1,48 @@
-# Project created to learn authentication with fastify, SOLID principles and clean architechture.
+# Fastify Authentication Project  
 
-#clean-code #cean-architecture #SOLID #fastify
+Projeto criado para estudar **autenticação com Fastify**, aplicando **princípios do SOLID** e **Clean Architecture**, sempre seguindo boas práticas de **Clean Code**.  
 
-## Used Tools
+## 🔑 Objetivos
 
-- fastify
-- Prisma ORM
-- jest
-- typescript
-- jwt
-- bcrypt
+- Aprender a estruturar uma aplicação de autenticação usando Fastify.  
+- Praticar separação de responsabilidades com **Camadas** bem definidas.  
+- Implementar boas práticas de **design de software** (Clean Architecture + SOLID).  
+- Testar a aplicação com **Jest** e boas práticas de TDD.  
 
-## Project structure
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- [Fastify](https://fastify.dev/) — Web framework rápido e minimalista.  
+- [Prisma ORM](https://www.prisma.io/) — ORM moderno para Node.js.  
+- [Jest](https://jestjs.io/) — Framework de testes.  
+- [TypeScript](https://www.typescriptlang.org/) — Tipagem estática.  
+- [JWT](https://jwt.io/) — Autenticação baseada em token.  
+- [bcrypt](https://www.npmjs.com/package/bcrypt) — Hashing seguro de senhas.  
+
+---
+
+## 📂 Estrutura do Projeto
 
 ```bash
 src/
- |____application/ // folder responsible only to manage business logic of the applicatoin
- |____domain/ // pure business logic of application
- |    |____entities
- |    |____enums // business enum 
- |    |____interfaces
- |    |____repositories // repositories contracts -> domain is only responsible to represent the pure business logic of the system
- |____interface/ // connect external world with the application. Translate json to useCases
- |    |____controllers/ 
- |    |    |____users/ // separeted with only users concerns
- |    |    |    |____user.controller.ts
- |    |____routes/ // route configuration file
- |    |    |    |____user.route.ts
- |____infrastructure/
- |    |____config/
- |    |    |____types
- |    |    |    |____fastify-instance.type.ts // customized instance of FastifyInstance to use zod validator
- |    |____repositories
- |    |____webserver.ts // configuration file responsible to set up the application
- |___app.ts // the entrypoint of the application, responsible for start up all the application
-test/   // test
- |___jest.config.ts // test configuration file
+ ├── application/            # Orquestração da lógica de negócio (useCases, DTOs, serviços)
+ ├── domain/                 # Regras de negócio puras
+ │   ├── entities/           # Entidades de domínio
+ │   ├── enums/              # Enums do domínio
+ │   ├── interfaces/         # Contratos e interfaces do domínio
+ │   └── repositories/       # Contratos de repositórios
+ ├── interface/              # Camada de entrada/saída (controllers e rotas)
+ │   ├── controllers/        # Controllers expostos ao mundo externo
+ │   │   └── users/          # Controllers relacionados a usuários
+ │   └── routes/             # Configuração de rotas
+ ├── infrastructure/         # Implementações técnicas (DB, config, webserver)
+ │   ├── config/             # Configurações
+ │   │   └── types/          # Tipos auxiliares
+ │   │       └── fastify-instance.type.ts # Instância customizada do Fastify
+ │   ├── repositories/       # Implementações concretas dos repositórios
+ │   └── webserver.ts        # Setup do servidor
+ └── app.ts                  # Ponto de entrada da aplicação
 
-```
+test/                        # Testes automatizados
+ └── jest.config.ts          # Configuração do Jest
